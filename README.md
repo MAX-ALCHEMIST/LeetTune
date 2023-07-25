@@ -4,7 +4,7 @@ LeetTune is a custom extension that allows you to play different audio files whe
 
 ## Installation
 
-1. **Download the ZIP**: Visit the LeetTune GitHub repository (https://github.com/your-username/LeetTune) and click on the "Download ZIP" button to download the extension's source code as a ZIP file.
+1. **Download the ZIP**: Visit the LeetTune GitHub repository ([LeetTune)](https://github.com/MAX-ALCHEMIST/LeetTune) and click on the "Download ZIP" button to download the extension's source code as a ZIP file.
 
 2. **Unzip the Folder**: Extract the contents of the downloaded ZIP file to a convenient location on your computer.
 
