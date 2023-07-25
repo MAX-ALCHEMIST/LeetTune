@@ -24,7 +24,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["assets/test.mp3", "assets/wrong.mp3"],
+      "resources": ["assets/accepted.mp3", "assets/wrong.mp3"],
       "matches": ["<all_urls>"]
     }
   ]

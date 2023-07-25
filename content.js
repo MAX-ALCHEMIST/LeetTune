@@ -1,4 +1,4 @@
-const successAudioElement = new Audio(chrome.runtime.getURL("assets/test.mp3"));
+const successAudioElement = new Audio(chrome.runtime.getURL("assets/accepted.mp3"));
 const wrongAnswerAudioElement = new Audio(
   chrome.runtime.getURL("assets/wrong.mp3")
 );
