@@ -1,20 +1,53 @@
-console.log("start LeetTune");
+const successAudioElement = new Audio(chrome.runtime.getURL("assets/test.mp3"));
+const wrongAnswerAudioElement = new Audio(
+  chrome.runtime.getURL("assets/wrong.mp3")
+);
+
+const playAudio = (audioElement) => {
+  audioElement
+    .play()
+    .then(() => {
+      console.log("Audio played successfully.");
+    })
+    .catch((error) => {
+      console.error("Error playing audio:", error);
+    });
+};
+
+let wrongAnswerPlayed = false;
+const checkSuccessAndPlayAudio = () => {
+  const successTag = document.querySelector(".success__3Ai7");
+  if (successTag && successTag.innerText.trim() === "Success") {
+    playAudio(successAudioElement);
+    console.log("Correct answer!");
+    return true;
+  } else {
+    const wrongAns = document.getElementsByClassName("error__2Ft1");
+    if (wrongAns && wrongAns.length > 0 && !wrongAnswerPlayed) {
+      playAudio(wrongAnswerAudioElement);
+      console.log("Wrong answer!");
+      wrongAnswerPlayed = true;
+    }
+    return false;
+  }
+};
 
 window.onload = () => {
-  setInterval(() => {
-    const successTag = document.getElementsByClassName("success__3Ai7");
-    const wrongAns = document.getElementsByClassName("error__2Ft1");
+  const successPlayed = checkSuccessAndPlayAudio();
 
-    const checkElem = (elem) => {
-      return elem && elem.length > 0;
-    };
-    let success = false;
-    if (checkElem(successTag) && successTag[0].innerText.trim() === "Success") {
-      console.log(successTag[0]);
-      console.log("Hello");
-      success = true;
-    } else {
-      console.log("Whatever it is");
-    }
-  }, 5000);
+  if (successPlayed || wrongAnswerPlayed) {
+    setTimeout(() => {
+      window.location.reload();
+    }, 10000);
+  } else {
+    setInterval(() => {
+      const successPlayed = checkSuccessAndPlayAudio();
+      if (successPlayed || wrongAnswerPlayed) {
+        clearInterval(this);
+        setTimeout(() => {
+          window.location.reload();
+        }, 10000);
+      }
+    }, 2000);
+  }
 };
